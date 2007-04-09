@@ -117,11 +117,41 @@ Begin VB.Form SmevIspDoc
       Tab(6).Control(3).Enabled=   0   'False
       Tab(6).Control(4)=   "CommandButtonOpen"
       Tab(6).Control(4).Enabled=   0   'False
-      Tab(6).Control(5)=   "log"
+      Tab(6).Control(5)=   "txtMessage"
       Tab(6).Control(5).Enabled=   0   'False
       Tab(6).Control(6)=   "Command1"
       Tab(6).Control(6).Enabled=   0   'False
-      Tab(6).ControlCount=   7
+      Tab(6).Control(7)=   "cmdDecode"
+      Tab(6).Control(7).Enabled=   0   'False
+      Tab(6).Control(8)=   "cmdEncode"
+      Tab(6).Control(8).Enabled=   0   'False
+      Tab(6).Control(9)=   "cmdCopyClipboard"
+      Tab(6).Control(9).Enabled=   0   'False
+      Tab(6).ControlCount=   10
+      Begin VB.CommandButton cmdCopyClipboard 
+         Caption         =   "Скопировать в буфер обменадля вставки в поле адаптера СМЭВ"
+         Height          =   375
+         Left            =   360
+         TabIndex        =   205
+         Top             =   5040
+         Width           =   5775
+      End
+      Begin VB.CommandButton cmdEncode 
+         Caption         =   "Кодировать"
+         Height          =   375
+         Left            =   6240
+         TabIndex        =   204
+         Top             =   5040
+         Width           =   1335
+      End
+      Begin VB.CommandButton cmdDecode 
+         Caption         =   "Декодировать"
+         Height          =   375
+         Left            =   7680
+         TabIndex        =   203
+         Top             =   5040
+         Width           =   1335
+      End
       Begin VB.TextBox Gosposhlina 
          Height          =   405
          Left            =   -67080
@@ -175,10 +205,11 @@ Begin VB.Form SmevIspDoc
          Top             =   600
          Width           =   2055
       End
-      Begin VB.TextBox log 
-         Height          =   4095
+      Begin VB.TextBox txtMessage 
+         Height          =   3735
          Left            =   360
          MultiLine       =   -1  'True
+         ScrollBars      =   2  'Vertical
          TabIndex        =   179
          Top             =   1200
          Width           =   8655
@@ -210,7 +241,7 @@ Begin VB.Form SmevIspDoc
          Width           =   375
       End
       Begin VB.CommandButton CommandButtonGenerate 
-         Caption         =   "Сгенерировать"
+         Caption         =   "Сохранить"
          Height          =   375
          Left            =   3720
          TabIndex        =   175
@@ -1893,6 +1924,8 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
+
+
 Dim dictUD As New Collection
 Dim ud As UdostDocument
 Dim idxUD As Integer
@@ -1918,19 +1951,15 @@ Dim dd2 As String '= "E:\смэв\"
 
 Const templateFileName = "template"
 
-'Declare Function GetUserDefaultLCID Lib "kernel32" () As Long
+Dim WithEvents Bas64 As Base64
+Attribute Bas64.VB_VarHelpID = -1
 
-Private Function UToA(unicode As String)
+Dim byteBuffer() As Byte
+Dim strBuffer As String
+Dim flgFile As Integer
+Dim encBuffer As String
+Dim decBuffer As String
 
-    'sys_LCID = GetSystemDefaultLCID()
-    UToA = StrConv(unicode, vbUnicode)
-End Function
-
-Private Function AToU(unicode As String)
-
-    'sys_LCID = GetSystemDefaultLCID()
-    AToU = StrConv(unicode, vbFromUnicode)
-End Function
 Private Sub AddNedvizhimost_Click()
     SaveNedvizhimost.Visible = True
     UndoNedvizhimost.Visible = True
@@ -2025,7 +2054,7 @@ CommonDialog1.InitDir = docDir
 CommonDialog1.ShowOpen
 
 'The FileName property gives you the variable you need to use
-SmevIspDoc.openDoc (CommonDialog1.filename)
+SmevIspDoc.openDoc (CommonDialog1.FileName)
 End Sub
 
 Private Sub DeleteNedvizhimost_Click()
@@ -2413,29 +2442,430 @@ Private Sub addUdostDocument_Click()
 End Sub
 
 Private Sub CommandButtonGenerate_Click()
-    Dim filename As String
+    Dim FileName As String
 
-    filename = ispolnitelniy_document_nomer.Text + "_" + po_delu_nomer.Text
-    filename = Replace(filename, "-", "_")
-    filename = Replace(filename, "\", "_")
-    filename = Replace(filename, "/", "_")
-    filename = Replace(filename, ".", "_")
+    FileName = ispolnitelniy_document_nomer.Text + "_" + po_delu_nomer.Text
+    FileName = Replace(FileName, "-", "_")
+    FileName = Replace(FileName, "\", "_")
+    FileName = Replace(FileName, "/", "_")
+    FileName = Replace(FileName, ".", "_")
       
-    Save filename
+    Save FileName
 
 End Sub
 
-Function FileText(filename As String) As String
-    Dim fso As New FileSystemObject
-    Dim ts As TextStream
-    
-    Set ts = fso.OpenTextFile(filename)
-    FileText = ts.ReadAll
-End Function
+Private Sub FileText()
 
-Private Sub Save(ByVal filename As String)
+    txtMessage.Text = "<?xml version='1.0'?>"
+    txtMessage.Text = txtMessage.Text + vbNewLine + "<ispolnitelniy_document"
+
+    txtMessage.Text = txtMessage.Text + vbNewLine + "xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"""
+    txtMessage.Text = txtMessage.Text + vbNewLine + "xsi:noNamespaceSchemaLocation=""data_id.xsd"">"
   
-  filename2 = docDir + "id_" + filename + ".xml"
+    txtMessage.Text = txtMessage.Text + vbNewLine + "<ispolnitelniy_document_nomer>"
+    txtMessage.Text = txtMessage.Text + vbNewLine + ispolnitelniy_document_nomer.Text
+    txtMessage.Text = txtMessage.Text + vbNewLine + "</ispolnitelniy_document_nomer>"
+
+    txtMessage.Text = txtMessage.Text + vbNewLine + "<po_delu_nomer>"
+    txtMessage.Text = txtMessage.Text + vbNewLine + po_delu_nomer.Text
+    txtMessage.Text = txtMessage.Text + vbNewLine + "</po_delu_nomer>"
+  
+    txtMessage.Text = txtMessage.Text + vbNewLine + "<srok_predyavleniya_k_ispolneniyu_znachenie>"
+    txtMessage.Text = txtMessage.Text + vbNewLine + srok_predyavleniya_k_ispolneniyu_znachenie.Text
+    txtMessage.Text = txtMessage.Text + vbNewLine + "</srok_predyavleniya_k_ispolneniyu_znachenie>"
+  
+    txtMessage.Text = txtMessage.Text + vbNewLine + "<srok_predyavleniya_k_ispolneniyu_razmernost>"
+    txtMessage.Text = txtMessage.Text + vbNewLine + srok_predyavleniya_k_ispolneniyu_razmernost.Text
+    txtMessage.Text = txtMessage.Text + vbNewLine + "</srok_predyavleniya_k_ispolneniyu_razmernost>"
+
+    txtMessage.Text = txtMessage.Text + vbNewLine + "<SolidarnoeVziskanie>"
+    txtMessage.Text = txtMessage.Text + vbNewLine + SolidarnoeVziskanie.Text
+    txtMessage.Text = txtMessage.Text + vbNewLine + "</SolidarnoeVziskanie>"
+  
+    txtMessage.Text = txtMessage.Text + vbNewLine + "<nomer_ekz_ID>"
+    txtMessage.Text = txtMessage.Text + vbNewLine + nomer_ekz_ID.Text
+    txtMessage.Text = txtMessage.Text + vbNewLine + "</nomer_ekz_ID>"
+  
+    txtMessage.Text = txtMessage.Text + vbNewLine + "<Gosposhlina>"
+    txtMessage.Text = txtMessage.Text + vbNewLine + Gosposhlina.Text
+    txtMessage.Text = txtMessage.Text + vbNewLine + "</Gosposhlina>"
+  
+    txtMessage.Text = txtMessage.Text + vbNewLine + "<data_vidachi>"
+    txtMessage.Text = txtMessage.Text + vbNewLine + ob_data_vidachi.Text
+    txtMessage.Text = txtMessage.Text + vbNewLine + "</data_vidachi>"
+  
+    txtMessage.Text = txtMessage.Text + vbNewLine + "<data_sudebnogo_acta>"
+    txtMessage.Text = txtMessage.Text + vbNewLine + data_sudebnogo_acta.Text
+    txtMessage.Text = txtMessage.Text + vbNewLine + "</data_sudebnogo_acta>"
+  
+    txtMessage.Text = txtMessage.Text + vbNewLine + "<dublicat>"
+    txtMessage.Text = txtMessage.Text + vbNewLine + dublicat.Text
+    txtMessage.Text = txtMessage.Text + vbNewLine + "</dublicat>"
+  
+    txtMessage.Text = txtMessage.Text + vbNewLine + "<vidan_na_osnovanii_sud_acta_ne_podl_razm_v_seti>"
+    txtMessage.Text = txtMessage.Text + vbNewLine + vidan_na_osnovanii_sud_acta_ne_podl_razm_v_seti.Text
+    txtMessage.Text = txtMessage.Text + vbNewLine + "</vidan_na_osnovanii_sud_acta_ne_podl_razm_v_seti>"
+  
+    txtMessage.Text = txtMessage.Text + vbNewLine + "<data_vsupleniya_v_zs>"
+    txtMessage.Text = txtMessage.Text + vbNewLine + data_vsupleniya_v_zs.Text
+    txtMessage.Text = txtMessage.Text + vbNewLine + "</data_vsupleniya_v_zs>"
+  
+    txtMessage.Text = txtMessage.Text + vbNewLine + "<FIO_sudiy>"
+    txtMessage.Text = txtMessage.Text + vbNewLine + FIO_sudiy.Text
+    txtMessage.Text = txtMessage.Text + vbNewLine + "</FIO_sudiy>"
+  
+    txtMessage.Text = txtMessage.Text + vbNewLine + "<podl_nemedl_isp>"
+    txtMessage.Text = txtMessage.Text + vbNewLine + podl_nemedl_isp.Text
+    txtMessage.Text = txtMessage.Text + vbNewLine + "</podl_nemedl_isp>"
+  
+    txtMessage.Text = txtMessage.Text + vbNewLine + "<vid_sushnosti_ispolneniya_ID>"
+    txtMessage.Text = txtMessage.Text + vbNewLine + vid_sushnosti_ispolneniya_ID.Text
+    txtMessage.Text = txtMessage.Text + vbNewLine + "</vid_sushnosti_ispolneniya_ID>"
+  
+    txtMessage.Text = txtMessage.Text + vbNewLine + "<summa_dolga>"
+    txtMessage.Text = txtMessage.Text + vbNewLine + summa_dolga.Text
+    txtMessage.Text = txtMessage.Text + vbNewLine + "</summa_dolga>"
+  
+    txtMessage.Text = txtMessage.Text + vbNewLine + "<valyuta_dolga>"
+    txtMessage.Text = txtMessage.Text + vbNewLine + valyuta_dolga.Text
+    txtMessage.Text = txtMessage.Text + vbNewLine + "</valyuta_dolga>"
+  
+    txtMessage.Text = txtMessage.Text + vbNewLine + "<ustanovochnaya_chast_sudebnogo_acta>"
+    txtMessage.Text = txtMessage.Text + vbNewLine + ustanovochnaya_chast_sudebnogo_acta.Text
+    txtMessage.Text = txtMessage.Text + vbNewLine + "</ustanovochnaya_chast_sudebnogo_acta>"
+  
+    txtMessage.Text = txtMessage.Text + vbNewLine + "<rezolyutativnaya_chast_sudebnogo_acta>"
+    txtMessage.Text = txtMessage.Text + vbNewLine + rezolyutativnaya_chast_sudebnogo_acta.Text
+    txtMessage.Text = txtMessage.Text + vbNewLine + "</rezolyutativnaya_chast_sudebnogo_acta>"
+  
+    txtMessage.Text = txtMessage.Text + vbNewLine + "<dolzhnik_status_lica>"
+    txtMessage.Text = txtMessage.Text + vbNewLine + dolzhnik_status_lica.Text
+    txtMessage.Text = txtMessage.Text + vbNewLine + "</dolzhnik_status_lica>"
+  
+    txtMessage.Text = txtMessage.Text + vbNewLine + "<vziskatel>"
+    txtMessage.Text = txtMessage.Text + vbNewLine + vziskatel.Text
+    txtMessage.Text = txtMessage.Text + vbNewLine + "</vziskatel>"
+  
+    txtMessage.Text = txtMessage.Text + vbNewLine + "<adres>"
+    txtMessage.Text = txtMessage.Text + vbNewLine + adres.Text
+    txtMessage.Text = txtMessage.Text + vbNewLine + "</adres>"
+  
+    txtMessage.Text = txtMessage.Text + vbNewLine + "<inn>"
+    txtMessage.Text = txtMessage.Text + vbNewLine + inn.Text
+    txtMessage.Text = txtMessage.Text + vbNewLine + "</inn>"
+  
+    txtMessage.Text = txtMessage.Text + vbNewLine + "<kpp>"
+    txtMessage.Text = txtMessage.Text + vbNewLine + kpp.Text
+    txtMessage.Text = txtMessage.Text + vbNewLine + "</kpp>"
+  
+    txtMessage.Text = txtMessage.Text + vbNewLine + "<ogrn>"
+    txtMessage.Text = txtMessage.Text + vbNewLine + ogrn.Text
+    txtMessage.Text = txtMessage.Text + vbNewLine + "</ogrn>"
+  
+    txtMessage.Text = txtMessage.Text + vbNewLine + "<data_registracii>"
+    txtMessage.Text = txtMessage.Text + vbNewLine + data_registracii.Text
+    txtMessage.Text = txtMessage.Text + vbNewLine + "</data_registracii>"
+  
+    txtMessage.Text = txtMessage.Text + vbNewLine + "<mesto_registracii>"
+    txtMessage.Text = txtMessage.Text + vbNewLine + mesto_registracii.Text
+    txtMessage.Text = txtMessage.Text + vbNewLine + "</mesto_registracii>"
+
+    txtMessage.Text = txtMessage.Text + vbNewLine + "<data_rozhdeniya></data_rozhdeniya>"
+    txtMessage.Text = txtMessage.Text + vbNewLine + "<snils></snils>"
+    txtMessage.Text = txtMessage.Text + vbNewLine + "<mesto_rozhdeniya></mesto_rozhdeniya>"
+  
+    txtMessage.Text = txtMessage.Text + vbNewLine + "<naimenovanie_poluchatelya>"
+    txtMessage.Text = txtMessage.Text + vbNewLine + naimenovanie_poluchatelya.Text
+    txtMessage.Text = txtMessage.Text + vbNewLine + "</naimenovanie_poluchatelya>"
+  
+    txtMessage.Text = txtMessage.Text + vbNewLine + "<schet_poluchatelya>"
+    txtMessage.Text = txtMessage.Text + vbNewLine + schet_poluchatelya.Text
+    txtMessage.Text = txtMessage.Text + vbNewLine + "</schet_poluchatelya>"
+  
+    txtMessage.Text = txtMessage.Text + vbNewLine + "<licevoy_schet>"
+    txtMessage.Text = txtMessage.Text + vbNewLine + licevoy_schet.Text
+    txtMessage.Text = txtMessage.Text + vbNewLine + "</licevoy_schet>"
+  
+    txtMessage.Text = txtMessage.Text + vbNewLine + "<summa>"
+    txtMessage.Text = txtMessage.Text + vbNewLine + summa.Text
+    txtMessage.Text = txtMessage.Text + vbNewLine + "</summa>"
+  
+    txtMessage.Text = txtMessage.Text + vbNewLine + "<okato>"
+    txtMessage.Text = txtMessage.Text + vbNewLine + okato.Text
+    txtMessage.Text = txtMessage.Text + vbNewLine + "</okato>"
+  
+    txtMessage.Text = txtMessage.Text + vbNewLine + "<oktmo>"
+    txtMessage.Text = txtMessage.Text + vbNewLine + oktmo.Text
+    txtMessage.Text = txtMessage.Text + vbNewLine + "</oktmo>"
+  
+    txtMessage.Text = txtMessage.Text + vbNewLine + "<inn_poluchatelya>"
+    txtMessage.Text = txtMessage.Text + vbNewLine + inn_poluchatelya.Text
+    txtMessage.Text = txtMessage.Text + vbNewLine + "</inn_poluchatelya>"
+  
+    txtMessage.Text = txtMessage.Text + vbNewLine + "<kpp_poluchatelya>"
+    txtMessage.Text = txtMessage.Text + vbNewLine + kpp_poluchatelya.Text
+    txtMessage.Text = txtMessage.Text + vbNewLine + "</kpp_poluchatelya>"
+  
+    txtMessage.Text = txtMessage.Text + vbNewLine + "<naimenovanie_banka_poluchatelya>"
+    txtMessage.Text = txtMessage.Text + vbNewLine + naimenovanie_banka_poluchatelya.Text
+    txtMessage.Text = txtMessage.Text + vbNewLine + "</naimenovanie_banka_poluchatelya>"
+  
+    txtMessage.Text = txtMessage.Text + vbNewLine + "<korschet_banka_poluchatelya>"
+    txtMessage.Text = txtMessage.Text + vbNewLine + korschet_banka_poluchatelya.Text
+    txtMessage.Text = txtMessage.Text + vbNewLine + "</korschet_banka_poluchatelya>"
+  
+    txtMessage.Text = txtMessage.Text + vbNewLine + "<bik_banka_poluchatelya>"
+    txtMessage.Text = txtMessage.Text + vbNewLine + bik_banka_poluchatelya.Text
+    txtMessage.Text = txtMessage.Text + vbNewLine + "</bik_banka_poluchatelya>"
+  
+    txtMessage.Text = txtMessage.Text + vbNewLine + "<pokazatel_tipa_platezha>"
+    txtMessage.Text = txtMessage.Text + vbNewLine + pokazatel_tipa_platezha.Text
+    txtMessage.Text = txtMessage.Text + vbNewLine + "</pokazatel_tipa_platezha>"
+  
+    txtMessage.Text = txtMessage.Text + vbNewLine + "<kbk>"
+    txtMessage.Text = txtMessage.Text + vbNewLine + kbk.Text
+    txtMessage.Text = txtMessage.Text + vbNewLine + "</kbk>"
+  
+    txtMessage.Text = txtMessage.Text + vbNewLine + "<dolzhnik_status_lica>"
+    txtMessage.Text = txtMessage.Text + vbNewLine + dolzhnik_status_lica.Text
+    txtMessage.Text = txtMessage.Text + vbNewLine + "</dolzhnik_status_lica>"
+  
+    txtMessage.Text = txtMessage.Text + vbNewLine + "<dolzhnik>"
+    txtMessage.Text = txtMessage.Text + vbNewLine + dolzhnik_dolzhnik.Text
+    txtMessage.Text = txtMessage.Text + vbNewLine + "</dolzhnik>"
+  
+    txtMessage.Text = txtMessage.Text + vbNewLine + "<dolzhnik_adres>"
+    txtMessage.Text = txtMessage.Text + vbNewLine + dolzhnik_adres.Text
+    txtMessage.Text = txtMessage.Text + vbNewLine + "</dolzhnik_adres>"
+  
+    txtMessage.Text = txtMessage.Text + vbNewLine + "<dolzhnik_kpp>"
+    txtMessage.Text = txtMessage.Text + vbNewLine + dolzhnik_kpp.Text
+    txtMessage.Text = txtMessage.Text + vbNewLine + "</dolzhnik_kpp>"
+  
+    txtMessage.Text = txtMessage.Text + vbNewLine + "<dolzhnik_ogrn>"
+    txtMessage.Text = txtMessage.Text + vbNewLine + dolzhnik_ogrn.Text
+    txtMessage.Text = txtMessage.Text + vbNewLine + "</dolzhnik_ogrn>"
+  
+    txtMessage.Text = txtMessage.Text + vbNewLine + "<dolzhnik_data_registracii>"
+    txtMessage.Text = txtMessage.Text + vbNewLine + dolzhnik_data_registracii.Text
+    txtMessage.Text = txtMessage.Text + vbNewLine + "</dolzhnik_data_registracii>"
+  
+    txtMessage.Text = txtMessage.Text + vbNewLine + "<strana_grazhdanstva_ili_registracii>"
+    txtMessage.Text = txtMessage.Text + vbNewLine + strana_grazhdanstva_ili_registracii.Text
+    txtMessage.Text = txtMessage.Text + vbNewLine + "</strana_grazhdanstva_ili_registracii>"
+  
+    txtMessage.Text = txtMessage.Text + vbNewLine + "<dolzhnik_pol>"
+    txtMessage.Text = txtMessage.Text + vbNewLine + dolzhnik_pol.Text
+    txtMessage.Text = txtMessage.Text + vbNewLine + "</dolzhnik_pol>"
+  
+    txtMessage.Text = txtMessage.Text + vbNewLine + "<dolzhnik_data_rozhdeniya>"
+    txtMessage.Text = txtMessage.Text + vbNewLine + dolzhnik_data_rozhdeniya.Text
+    txtMessage.Text = txtMessage.Text + vbNewLine + "</dolzhnik_data_rozhdeniya>"
+  
+    txtMessage.Text = txtMessage.Text + vbNewLine + "<dolzhnik_inn>"
+    txtMessage.Text = txtMessage.Text + vbNewLine + dolzhnik_inn.Text
+    txtMessage.Text = txtMessage.Text + vbNewLine + "</dolzhnik_inn>"
+  
+    txtMessage.Text = txtMessage.Text + vbNewLine + "<dolzhnik_snils>"
+    txtMessage.Text = txtMessage.Text + vbNewLine + dolzhnik_snils.Text
+    txtMessage.Text = txtMessage.Text + vbNewLine + "</dolzhnik_snils>"
+  
+    txtMessage.Text = txtMessage.Text + vbNewLine + "<dolzhnik_mesto_rozhdeniya>"
+    txtMessage.Text = txtMessage.Text + vbNewLine + dolzhnik_mesto_rozhdeniya.Text
+    txtMessage.Text = txtMessage.Text + vbNewLine + "</dolzhnik_mesto_rozhdeniya>"
+  
+    txtMessage.Text = txtMessage.Text + vbNewLine + "<UdostDocumentList>"
+  ' цикл по документам
+     For Each dUD In dictUD
+        txtMessage.Text = txtMessage.Text + vbNewLine + "<UdostDocument>"
+        
+        txtMessage.Text = txtMessage.Text + vbNewLine + "<vid>"
+        txtMessage.Text = txtMessage.Text + vbNewLine + dUD.vid
+        txtMessage.Text = txtMessage.Text + vbNewLine + "</vid>"
+        
+        txtMessage.Text = txtMessage.Text + vbNewLine + "<seriya>"
+        txtMessage.Text = txtMessage.Text + vbNewLine + dUD.seriya
+        txtMessage.Text = txtMessage.Text + vbNewLine + "</seriya>"
+        
+        txtMessage.Text = txtMessage.Text + vbNewLine + "<nomer>"
+        txtMessage.Text = txtMessage.Text + vbNewLine + dUD.nomer
+        txtMessage.Text = txtMessage.Text + vbNewLine + "</nomer>"
+        
+        txtMessage.Text = txtMessage.Text + vbNewLine + "<fio>"
+        txtMessage.Text = txtMessage.Text + vbNewLine + dUD.fio
+        txtMessage.Text = txtMessage.Text + vbNewLine + "</fio>"
+        
+        txtMessage.Text = txtMessage.Text + vbNewLine + "<pol>"
+        txtMessage.Text = txtMessage.Text + vbNewLine + dUD.pol
+        txtMessage.Text = txtMessage.Text + vbNewLine + "</pol>"
+        
+        txtMessage.Text = txtMessage.Text + vbNewLine + "<data_rozhdeniya>"
+        txtMessage.Text = txtMessage.Text + vbNewLine + dUD.data_rozhdeniya
+        txtMessage.Text = txtMessage.Text + vbNewLine + "</data_rozhdeniya>"
+        
+        txtMessage.Text = txtMessage.Text + vbNewLine + "<data_vidachi>"
+        txtMessage.Text = txtMessage.Text + vbNewLine + dUD.data_vidachi
+        txtMessage.Text = txtMessage.Text + vbNewLine + "</data_vidachi>"
+        
+        txtMessage.Text = txtMessage.Text + vbNewLine + "<kod_podrazdeleniya>"
+        txtMessage.Text = txtMessage.Text + vbNewLine + dUD.kod_podrazdeleniya
+        txtMessage.Text = txtMessage.Text + vbNewLine + "</kod_podrazdeleniya>"
+        
+        txtMessage.Text = txtMessage.Text + vbNewLine + "<mesto_rozhdeniya>"
+        txtMessage.Text = txtMessage.Text + vbNewLine + dUD.mesto_rozhdeniya
+        txtMessage.Text = txtMessage.Text + vbNewLine + "</mesto_rozhdeniya>"
+        
+        txtMessage.Text = txtMessage.Text + vbNewLine + "</UdostDocument>"
+    Next
+    txtMessage.Text = txtMessage.Text + vbNewLine + "</UdostDocumentList>"
+  
+    txtMessage.Text = txtMessage.Text + vbNewLine + "<NedvizhimostList>"
+  ' цикл по недвижимости
+  For Each dND In dictND
+        txtMessage.Text = txtMessage.Text + vbNewLine + "<Nedvizhimost>"
+        txtMessage.Text = txtMessage.Text + vbNewLine + "<Actualnost>"
+        txtMessage.Text = txtMessage.Text + vbNewLine + dND.Actualnost
+        txtMessage.Text = txtMessage.Text + vbNewLine + "</Actualnost>"
+        
+        txtMessage.Text = txtMessage.Text + vbNewLine + "<Naimenovanie>"
+        txtMessage.Text = txtMessage.Text + vbNewLine + dND.Naimenovanie
+        txtMessage.Text = txtMessage.Text + vbNewLine + "</Naimenovanie>"
+        
+        txtMessage.Text = txtMessage.Text + vbNewLine + "<Ploshad>"
+        txtMessage.Text = txtMessage.Text + vbNewLine + dND.Ploshad
+        txtMessage.Text = txtMessage.Text + vbNewLine + "</Ploshad>"
+        
+        txtMessage.Text = txtMessage.Text + vbNewLine + "<UslNomer>"
+        txtMessage.Text = txtMessage.Text + vbNewLine + dND.UslNomer
+        txtMessage.Text = txtMessage.Text + vbNewLine + "</UslNomer>"
+        
+        txtMessage.Text = txtMessage.Text + vbNewLine + "<InvNomer>"
+        txtMessage.Text = txtMessage.Text + vbNewLine + dND.InvNomer
+        txtMessage.Text = txtMessage.Text + vbNewLine + "</InvNomer>"
+        
+        txtMessage.Text = txtMessage.Text + vbNewLine + "<KadastrNomer>"
+        txtMessage.Text = txtMessage.Text + vbNewLine + dND.KadastrNomer
+        txtMessage.Text = txtMessage.Text + vbNewLine + "</KadastrNomer>"
+        
+        txtMessage.Text = txtMessage.Text + vbNewLine + "<TochAdres>"
+        txtMessage.Text = txtMessage.Text + vbNewLine + dND.TochAdres
+        txtMessage.Text = txtMessage.Text + vbNewLine + "</TochAdres>"
+        txtMessage.Text = txtMessage.Text + vbNewLine + "</Nedvizhimost>"
+    Next
+        txtMessage.Text = txtMessage.Text + vbNewLine + "</NedvizhimostList>"
+  
+    txtMessage.Text = txtMessage.Text + vbNewLine + "<mr_actualnost>"
+    txtMessage.Text = txtMessage.Text + vbNewLine + mr_actualnost.Text
+    txtMessage.Text = txtMessage.Text + vbNewLine + "</mr_actualnost>"
+  
+    txtMessage.Text = txtMessage.Text + vbNewLine + "<naimenovanie_organizacii_fio_ip>"
+    txtMessage.Text = txtMessage.Text + vbNewLine + naimenovanie_organizacii_fio_ip.Text
+    txtMessage.Text = txtMessage.Text + vbNewLine + "</naimenovanie_organizacii_fio_ip>"
+  
+    txtMessage.Text = txtMessage.Text + vbNewLine + "<jur_address>"
+    txtMessage.Text = txtMessage.Text + vbNewLine + jur_address.Text
+    txtMessage.Text = txtMessage.Text + vbNewLine + "</jur_address>"
+  
+    txtMessage.Text = txtMessage.Text + vbNewLine + "<fact_address>"
+    txtMessage.Text = txtMessage.Text + vbNewLine + fact_address.Text
+    txtMessage.Text = txtMessage.Text + vbNewLine + "</fact_address>"
+  
+    txtMessage.Text = txtMessage.Text + vbNewLine + "<TransSredstvaList>"
+  
+  ' цикл по документам
+  For Each dTD In dictTD
+    txtMessage.Text = txtMessage.Text + vbNewLine + "<TransSredstva>"
+        txtMessage.Text = txtMessage.Text + vbNewLine + "<Actualnost>"
+        txtMessage.Text = txtMessage.Text + vbNewLine + dTD.Actualnost
+        txtMessage.Text = txtMessage.Text + vbNewLine + "</Actualnost>"
+        
+        txtMessage.Text = txtMessage.Text + vbNewLine + "<Kategoriya>"
+        txtMessage.Text = txtMessage.Text + vbNewLine + dTD.Kategoriya
+        txtMessage.Text = txtMessage.Text + vbNewLine + "</Kategoriya>"
+        
+        txtMessage.Text = txtMessage.Text + vbNewLine + "<Marka>"
+        txtMessage.Text = txtMessage.Text + vbNewLine + dTD.Marka
+        txtMessage.Text = txtMessage.Text + vbNewLine + "</Marka>"
+        
+        txtMessage.Text = txtMessage.Text + vbNewLine + "<Model>"
+        txtMessage.Text = txtMessage.Text + vbNewLine + dTD.Model
+        txtMessage.Text = txtMessage.Text + vbNewLine + "</Model>"
+        
+        txtMessage.Text = txtMessage.Text + vbNewLine + "<Cvet>"
+        txtMessage.Text = txtMessage.Text + vbNewLine + dTD.Cvet
+        txtMessage.Text = txtMessage.Text + vbNewLine + "</Cvet>"
+        
+        txtMessage.Text = txtMessage.Text + vbNewLine + "<GosZnak>"
+        txtMessage.Text = txtMessage.Text + vbNewLine + dTD.GosZnak
+        txtMessage.Text = txtMessage.Text + vbNewLine + "</GosZnak>"
+        
+        txtMessage.Text = txtMessage.Text + vbNewLine + "<VIN>"
+        txtMessage.Text = txtMessage.Text + vbNewLine + dTD.VIN
+        txtMessage.Text = txtMessage.Text + vbNewLine + "</VIN>"
+        
+        txtMessage.Text = txtMessage.Text + vbNewLine + "<NDvig>"
+        txtMessage.Text = txtMessage.Text + vbNewLine + dTD.NDvig
+        txtMessage.Text = txtMessage.Text + vbNewLine + "</NDvig>"
+        
+        txtMessage.Text = txtMessage.Text + vbNewLine + "<KodPodr>"
+        txtMessage.Text = txtMessage.Text + vbNewLine + dTD.KodPodr
+        txtMessage.Text = txtMessage.Text + vbNewLine + "</KodPodr>"
+        
+        txtMessage.Text = txtMessage.Text + vbNewLine + "<GodVipuska>"
+        txtMessage.Text = txtMessage.Text + vbNewLine + dTD.GodVipuska
+        txtMessage.Text = txtMessage.Text + vbNewLine + "</GodVipuska>"
+        
+    txtMessage.Text = txtMessage.Text + vbNewLine + "</TransSredstva>"
+    Next
+    txtMessage.Text = txtMessage.Text + vbNewLine + "</TransSredstvaList>"
+  
+    txtMessage.Text = txtMessage.Text + vbNewLine + "<naimenovanie_suda_vidayushego_ispolnitelniy_document>"
+    txtMessage.Text = txtMessage.Text + vbNewLine + naimenovanie_suda_vidayushego_ispolnitelniy_document.Text
+    txtMessage.Text = txtMessage.Text + vbNewLine + "</naimenovanie_suda_vidayushego_ispolnitelniy_document>"
+  
+    txtMessage.Text = txtMessage.Text + vbNewLine + "<adres_suda_vidayushego_ispolnitelniy_document>"
+    txtMessage.Text = txtMessage.Text + vbNewLine + adres_suda_vidayushego_ispolnitelniy_document.Text
+    txtMessage.Text = txtMessage.Text + vbNewLine + "</adres_suda_vidayushego_ispolnitelniy_document>"
+  
+    txtMessage.Text = txtMessage.Text + vbNewLine + "<mesto_rassmotreniya_dela>"
+    txtMessage.Text = txtMessage.Text + vbNewLine + mesto_rassmotreniya_dela.Text
+    txtMessage.Text = txtMessage.Text + vbNewLine + "</mesto_rassmotreniya_dela>"
+
+    txtMessage.Text = txtMessage.Text + vbNewLine + "<ds:Signature xmlns:ds=""http://www.w3.org/2000/09/xmldsig#"">"
+    txtMessage.Text = txtMessage.Text + vbNewLine + "<ds:SignedInfo>"
+    txtMessage.Text = txtMessage.Text + vbNewLine + "<ds:CanonicalizationMethod Algorithm=""http://www.w3.org/TR/2001/REC-xml-c14n-20010315""/>"
+    txtMessage.Text = txtMessage.Text + vbNewLine + "<ds:SignatureMethod Algorithm=""urn:ietf:params:xml:ns:cpxmlsec:algorithms:gostr34102001-gostr3411""/>"
+    txtMessage.Text = txtMessage.Text + vbNewLine + "<ds:Reference Type=""xml"" URI="""">"
+    txtMessage.Text = txtMessage.Text + vbNewLine + "<ds:Transforms>"
+    txtMessage.Text = txtMessage.Text + vbNewLine + "<ds:Transform Algorithm=""http://www.w3.org/2000/09/xmldsig#enveloped-signature""/>"
+    txtMessage.Text = txtMessage.Text + vbNewLine + "<ds:Transform Algorithm=""http://www.w3.org/TR/2001/REC-xml-c14n-20010315#WithComments""/>"
+    txtMessage.Text = txtMessage.Text + vbNewLine + "</ds:Transforms>"
+    txtMessage.Text = txtMessage.Text + vbNewLine + "<ds:DigestMethod Algorithm=""urn:ietf:params:xml:ns:cpxmlsec:algorithms:gostr3411""/>"
+    txtMessage.Text = txtMessage.Text + vbNewLine + "<ds:DigestValue>bnhnxBTRSHuT1RODPY/6wWvB9pG2g8aImNeLPeYgnoE=</ds:DigestValue>"
+    txtMessage.Text = txtMessage.Text + vbNewLine + "</ds:Reference>"
+    txtMessage.Text = txtMessage.Text + vbNewLine + "</ds:SignedInfo>"
+
+    txtMessage.Text = txtMessage.Text + vbNewLine + "<ds:SignatureValue>"
+    txtMessage.Text = txtMessage.Text + vbNewLine + SignatureValue.Text
+    txtMessage.Text = txtMessage.Text + vbNewLine + "</ds:SignatureValue>"
+
+
+    txtMessage.Text = txtMessage.Text + vbNewLine + "<ds:KeyInfo>"
+    txtMessage.Text = txtMessage.Text + vbNewLine + "<ds:X509Data>"
+    txtMessage.Text = txtMessage.Text + vbNewLine + "<ds:X509Certificate>"
+    txtMessage.Text = txtMessage.Text + vbNewLine + X509Certificate.Text
+    txtMessage.Text = txtMessage.Text + vbNewLine + "</ds:X509Certificate>"
+    txtMessage.Text = txtMessage.Text + vbNewLine + "</ds:X509Data>"
+    txtMessage.Text = txtMessage.Text + vbNewLine + "</ds:KeyInfo>"
+    txtMessage.Text = txtMessage.Text + vbNewLine + "</ds:Signature>"
+
+    txtMessage.Text = txtMessage.Text + vbNewLine + "</ispolnitelniy_document>"
+End Sub
+
+Private Sub Save(ByVal FileName As String)
+  Dim filename2 As String
+  
+  filename2 = docDir + "id_" + FileName + ".xml"
   Set fso = CreateObject("Scripting.FileSystemObject")
   Set out = fso.CreateTextFile(filename2, True, True)
   out.WriteLine ("<?xml version='1.0'?>")
@@ -2848,39 +3278,32 @@ out.WriteLine ("</ds:Signature>")
   
 CommandButtonSign.Enabled = True
 
-log.Text = AToU(docDir + "id_" + filename + ".xml")
-End Sub
-
-Private Sub CommandButtonSend_Click()
-log.Text = log.Text + vbNewLine + "Документ отправлен"
+Call FileText
 
 End Sub
 
-Private Sub CommandButtonSign_Click()
-
-CommandButtonSend.Enabled = True
-log.Text = log.Text + vbNewLine + "Документ подписан"
-End Sub
 
 Private Sub CommandButtonValidate_Click()
 Rem Проверить
 
 If ispolnitelniy_document_nomer.Text = "" Then
 MsgBox "ИСПОЛНИТЕЛЬНЫЙ ДОКУМЕНТ № - Обязательное поле", 48
-GoTo error
+GoTo Error
 End If
 
 
 If po_delu_nomer.Text = "" Then
 MsgBox "ПО ДЕЛУ № - Обязательное поле", 48
-GoTo error
+GoTo Error
 End If
 
-log.Text = "Документ проверен"
+
 CommandButtonGenerate.Enabled = True
 
+txtMessage.Text = ""
+
 GoTo finish2
-error:
+Error:
 finish2:
 End Sub
 
@@ -3003,7 +3426,7 @@ StrFilename = "config.xml"
 'out.WriteLine ("</config>")
 'out.Close
 
-
+    Set Bas64 = New Base64
     Dim XDoc As Object
     
     Set XDoc = CreateObject("MSXML2.DOMDocument")
@@ -3295,12 +3718,12 @@ disableUdostDocument
     
 End Sub
 
-Sub openDoc(ByVal filename As String)
+Sub openDoc(ByVal FileName As String)
     Dim XDoc As Object
     On Error GoTo error_open_doc
     Set XDoc = CreateObject("MSXML2.DOMDocument")
     XDoc.async = False: XDoc.validateOnParse = False
-    XDoc.Load (filename)
+    XDoc.Load (FileName)
     
     TransSredstva.Clear
     Nedvizhimost.Clear
@@ -3533,6 +3956,8 @@ Sub openDoc(ByVal filename As String)
         TransSredstva.Selected(0) = True
     End If
         
+    Call FileText
+    
     Call Show
 error_open_doc:
 End Sub
@@ -3827,4 +4252,21 @@ End Sub
 
 Private Sub Command2_Click()
     frmAbout.Show vbModal
+End Sub
+
+Private Sub cmdEncode_Click()
+    
+    Bas64.sBuffer = txtMessage.Text
+    Call Bas64.Base64Encode
+    encBuffer = Bas64.Base64Buf
+    txtMessage.Text = encBuffer
+    
+End Sub
+
+Private Sub cmdDecode_Click()
+   
+   Bas64.Base64Buf = txtMessage.Text
+    Call Bas64.Base64Decode
+    txtMessage.Text = Bas64.bBuffer
+
 End Sub
