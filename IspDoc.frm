@@ -38,43 +38,43 @@ Begin VB.Form SmevIspDoc
       TabCaption(0)   =   "Общие"
       TabPicture(0)   =   "IspDoc.frx":0000
       Tab(0).ControlEnabled=   0   'False
-      Tab(0).Control(0)=   "Gosposhlina"
-      Tab(0).Control(1)=   "SolidarnoeVziskanie"
-      Tab(0).Control(2)=   "vid_sushnosti_ispolneniya_ID"
-      Tab(0).Control(3)=   "FIO_sudiy"
-      Tab(0).Control(4)=   "valyuta_dolga"
-      Tab(0).Control(5)=   "summa_dolga"
-      Tab(0).Control(6)=   "podl_nemedl_isp"
-      Tab(0).Control(7)=   "data_vsupleniya_v_zs"
-      Tab(0).Control(8)=   "vidan_na_osnovanii_sud_acta_ne_podl_razm_v_seti"
-      Tab(0).Control(9)=   "dublicat"
-      Tab(0).Control(10)=   "data_sudebnogo_acta"
-      Tab(0).Control(11)=   "ob_data_vidachi"
-      Tab(0).Control(12)=   "nomer_ekz_ID"
-      Tab(0).Control(13)=   "srok_predyavleniya_k_ispolneniyu_razmernost"
+      Tab(0).Control(0)=   "Label4"
+      Tab(0).Control(1)=   "Label5"
+      Tab(0).Control(2)=   "Label6"
+      Tab(0).Control(3)=   "Label7"
+      Tab(0).Control(4)=   "Label8"
+      Tab(0).Control(5)=   "Label9"
+      Tab(0).Control(6)=   "Label10"
+      Tab(0).Control(7)=   "Label11"
+      Tab(0).Control(8)=   "Label12"
+      Tab(0).Control(9)=   "Label13"
+      Tab(0).Control(10)=   "Label14"
+      Tab(0).Control(11)=   "Label15"
+      Tab(0).Control(12)=   "Label23"
+      Tab(0).Control(13)=   "Label3"
       Tab(0).Control(14)=   "srok_predyavleniya_k_ispolneniyu_znachenie"
-      Tab(0).Control(15)=   "Label3"
-      Tab(0).Control(16)=   "Label23"
-      Tab(0).Control(17)=   "Label15"
-      Tab(0).Control(18)=   "Label14"
-      Tab(0).Control(19)=   "Label13"
-      Tab(0).Control(20)=   "Label12"
-      Tab(0).Control(21)=   "Label11"
-      Tab(0).Control(22)=   "Label10"
-      Tab(0).Control(23)=   "Label9"
-      Tab(0).Control(24)=   "Label8"
-      Tab(0).Control(25)=   "Label7"
-      Tab(0).Control(26)=   "Label6"
-      Tab(0).Control(27)=   "Label5"
-      Tab(0).Control(28)=   "Label4"
+      Tab(0).Control(15)=   "srok_predyavleniya_k_ispolneniyu_razmernost"
+      Tab(0).Control(16)=   "nomer_ekz_ID"
+      Tab(0).Control(17)=   "ob_data_vidachi"
+      Tab(0).Control(18)=   "data_sudebnogo_acta"
+      Tab(0).Control(19)=   "dublicat"
+      Tab(0).Control(20)=   "vidan_na_osnovanii_sud_acta_ne_podl_razm_v_seti"
+      Tab(0).Control(21)=   "data_vsupleniya_v_zs"
+      Tab(0).Control(22)=   "podl_nemedl_isp"
+      Tab(0).Control(23)=   "summa_dolga"
+      Tab(0).Control(24)=   "valyuta_dolga"
+      Tab(0).Control(25)=   "FIO_sudiy"
+      Tab(0).Control(26)=   "vid_sushnosti_ispolneniya_ID"
+      Tab(0).Control(27)=   "SolidarnoeVziskanie"
+      Tab(0).Control(28)=   "Gosposhlina"
       Tab(0).ControlCount=   29
       TabCaption(1)   =   "Судебный акт"
       TabPicture(1)   =   "IspDoc.frx":001C
       Tab(1).ControlEnabled=   0   'False
-      Tab(1).Control(0)=   "rezolyutativnaya_chast_sudebnogo_acta"
-      Tab(1).Control(1)=   "ustanovochnaya_chast_sudebnogo_acta"
-      Tab(1).Control(2)=   "Label17"
-      Tab(1).Control(3)=   "Label16"
+      Tab(1).Control(0)=   "Label16"
+      Tab(1).Control(1)=   "Label17"
+      Tab(1).Control(2)=   "ustanovochnaya_chast_sudebnogo_acta"
+      Tab(1).Control(3)=   "rezolyutativnaya_chast_sudebnogo_acta"
       Tab(1).ControlCount=   4
       TabCaption(2)   =   "Взыскатель"
       TabPicture(2)   =   "IspDoc.frx":0038
@@ -89,20 +89,20 @@ Begin VB.Form SmevIspDoc
       TabCaption(4)   =   "Реквизиты"
       TabPicture(4)   =   "IspDoc.frx":0070
       Tab(4).ControlEnabled=   0   'False
-      Tab(4).Control(0)=   "adres_suda_vidayushego_ispolnitelniy_document"
-      Tab(4).Control(1)=   "naimenovanie_suda_vidayushego_ispolnitelniy_document"
-      Tab(4).Control(2)=   "mesto_rassmotreniya_dela"
-      Tab(4).Control(3)=   "Label78"
-      Tab(4).Control(4)=   "Label77"
-      Tab(4).Control(5)=   "Label76"
+      Tab(4).Control(0)=   "Label76"
+      Tab(4).Control(1)=   "Label77"
+      Tab(4).Control(2)=   "Label78"
+      Tab(4).Control(3)=   "mesto_rassmotreniya_dela"
+      Tab(4).Control(4)=   "naimenovanie_suda_vidayushego_ispolnitelniy_document"
+      Tab(4).Control(5)=   "adres_suda_vidayushego_ispolnitelniy_document"
       Tab(4).ControlCount=   6
       TabCaption(5)   =   "Подпись"
       TabPicture(5)   =   "IspDoc.frx":008C
       Tab(5).ControlEnabled=   0   'False
-      Tab(5).Control(0)=   "X509Certificate"
-      Tab(5).Control(1)=   "SignatureValue"
-      Tab(5).Control(2)=   "Label80"
-      Tab(5).Control(3)=   "Label79"
+      Tab(5).Control(0)=   "Label79"
+      Tab(5).Control(1)=   "Label80"
+      Tab(5).Control(2)=   "SignatureValue"
+      Tab(5).Control(3)=   "X509Certificate"
       Tab(5).ControlCount=   4
       TabCaption(6)   =   "СМЭВ3"
       TabPicture(6)   =   "IspDoc.frx":00A8
@@ -127,14 +127,24 @@ Begin VB.Form SmevIspDoc
       Tab(6).Control(8).Enabled=   0   'False
       Tab(6).Control(9)=   "cmdCopyClipboard"
       Tab(6).Control(9).Enabled=   0   'False
-      Tab(6).ControlCount=   10
+      Tab(6).Control(10)=   "cmdPasteClipboard"
+      Tab(6).Control(10).Enabled=   0   'False
+      Tab(6).ControlCount=   11
+      Begin VB.CommandButton cmdPasteClipboard 
+         Caption         =   "Вставить из СМЭВ"
+         Height          =   375
+         Left            =   2640
+         TabIndex        =   206
+         Top             =   5040
+         Width           =   2175
+      End
       Begin VB.CommandButton cmdCopyClipboard 
-         Caption         =   "Скопировать в буфер обменадля вставки в поле адаптера СМЭВ"
+         Caption         =   "Копировать для СМЭВ"
          Height          =   375
          Left            =   360
          TabIndex        =   205
          Top             =   5040
-         Width           =   5775
+         Width           =   2175
       End
       Begin VB.CommandButton cmdEncode 
          Caption         =   "Кодировать"
@@ -327,96 +337,96 @@ Begin VB.Form SmevIspDoc
          TabCaption(1)   =   "Документы"
          TabPicture(1)   =   "IspDoc.frx":00F7
          Tab(1).ControlEnabled=   0   'False
-         Tab(1).Control(0)=   "pol"
-         Tab(1).Control(1)=   "UndoUdostDocument"
-         Tab(1).Control(2)=   "SaveUdostDocument"
-         Tab(1).Control(3)=   "DeleteUdostDocument"
-         Tab(1).Control(4)=   "EditUdostDocument"
-         Tab(1).Control(5)=   "addUdostDocument"
-         Tab(1).Control(6)=   "mesto_rozhdeniya"
-         Tab(1).Control(7)=   "kod_podrazdeleniya"
-         Tab(1).Control(8)=   "data_vidachi"
-         Tab(1).Control(9)=   "data_rozhdeniya"
-         Tab(1).Control(10)=   "fio"
-         Tab(1).Control(11)=   "nomer"
-         Tab(1).Control(12)=   "seriya"
-         Tab(1).Control(13)=   "vid"
-         Tab(1).Control(14)=   "UdostDocument"
-         Tab(1).Control(15)=   "Label54"
-         Tab(1).Control(16)=   "Label53"
-         Tab(1).Control(17)=   "Label52"
-         Tab(1).Control(18)=   "Label51"
-         Tab(1).Control(19)=   "Label50"
-         Tab(1).Control(20)=   "Label49"
-         Tab(1).Control(21)=   "Label48"
-         Tab(1).Control(22)=   "Label47"
-         Tab(1).Control(23)=   "Label46"
+         Tab(1).Control(0)=   "Label46"
+         Tab(1).Control(1)=   "Label47"
+         Tab(1).Control(2)=   "Label48"
+         Tab(1).Control(3)=   "Label49"
+         Tab(1).Control(4)=   "Label50"
+         Tab(1).Control(5)=   "Label51"
+         Tab(1).Control(6)=   "Label52"
+         Tab(1).Control(7)=   "Label53"
+         Tab(1).Control(8)=   "Label54"
+         Tab(1).Control(9)=   "UdostDocument"
+         Tab(1).Control(10)=   "vid"
+         Tab(1).Control(11)=   "seriya"
+         Tab(1).Control(12)=   "nomer"
+         Tab(1).Control(13)=   "fio"
+         Tab(1).Control(14)=   "data_rozhdeniya"
+         Tab(1).Control(15)=   "data_vidachi"
+         Tab(1).Control(16)=   "kod_podrazdeleniya"
+         Tab(1).Control(17)=   "mesto_rozhdeniya"
+         Tab(1).Control(18)=   "addUdostDocument"
+         Tab(1).Control(19)=   "EditUdostDocument"
+         Tab(1).Control(20)=   "DeleteUdostDocument"
+         Tab(1).Control(21)=   "SaveUdostDocument"
+         Tab(1).Control(22)=   "UndoUdostDocument"
+         Tab(1).Control(23)=   "pol"
          Tab(1).ControlCount=   24
          TabCaption(2)   =   "Недвижимость"
          TabPicture(2)   =   "IspDoc.frx":0113
          Tab(2).ControlEnabled=   0   'False
-         Tab(2).Control(0)=   "UndoNedvizhimost"
-         Tab(2).Control(1)=   "SaveNedvizhimost"
-         Tab(2).Control(2)=   "DeleteNedvizhimost"
-         Tab(2).Control(3)=   "EditNedvizhimost"
-         Tab(2).Control(4)=   "AddNedvizhimost"
-         Tab(2).Control(5)=   "TochAdres"
-         Tab(2).Control(6)=   "KadastrNomer"
-         Tab(2).Control(7)=   "InvNomer"
-         Tab(2).Control(8)=   "UslNomer"
-         Tab(2).Control(9)=   "Ploshad"
-         Tab(2).Control(10)=   "Naimenovanie"
-         Tab(2).Control(11)=   "Actualnost"
-         Tab(2).Control(12)=   "Nedvizhimost"
-         Tab(2).Control(13)=   "Label61"
-         Tab(2).Control(14)=   "Label60"
-         Tab(2).Control(15)=   "Label59"
-         Tab(2).Control(16)=   "Label58"
-         Tab(2).Control(17)=   "Label57"
-         Tab(2).Control(18)=   "Label56"
-         Tab(2).Control(19)=   "Label55"
+         Tab(2).Control(0)=   "Label55"
+         Tab(2).Control(1)=   "Label56"
+         Tab(2).Control(2)=   "Label57"
+         Tab(2).Control(3)=   "Label58"
+         Tab(2).Control(4)=   "Label59"
+         Tab(2).Control(5)=   "Label60"
+         Tab(2).Control(6)=   "Label61"
+         Tab(2).Control(7)=   "Nedvizhimost"
+         Tab(2).Control(8)=   "Actualnost"
+         Tab(2).Control(9)=   "Naimenovanie"
+         Tab(2).Control(10)=   "Ploshad"
+         Tab(2).Control(11)=   "UslNomer"
+         Tab(2).Control(12)=   "InvNomer"
+         Tab(2).Control(13)=   "KadastrNomer"
+         Tab(2).Control(14)=   "TochAdres"
+         Tab(2).Control(15)=   "AddNedvizhimost"
+         Tab(2).Control(16)=   "EditNedvizhimost"
+         Tab(2).Control(17)=   "DeleteNedvizhimost"
+         Tab(2).Control(18)=   "SaveNedvizhimost"
+         Tab(2).Control(19)=   "UndoNedvizhimost"
          Tab(2).ControlCount=   20
          TabCaption(3)   =   "Место работы"
          TabPicture(3)   =   "IspDoc.frx":012F
          Tab(3).ControlEnabled=   0   'False
-         Tab(3).Control(0)=   "fact_address"
-         Tab(3).Control(1)=   "jur_address"
-         Tab(3).Control(2)=   "naimenovanie_organizacii_fio_ip"
-         Tab(3).Control(3)=   "mr_actualnost"
-         Tab(3).Control(4)=   "Label65"
-         Tab(3).Control(5)=   "Label64"
-         Tab(3).Control(6)=   "Label63"
-         Tab(3).Control(7)=   "Label62"
+         Tab(3).Control(0)=   "Label62"
+         Tab(3).Control(1)=   "Label63"
+         Tab(3).Control(2)=   "Label64"
+         Tab(3).Control(3)=   "Label65"
+         Tab(3).Control(4)=   "mr_actualnost"
+         Tab(3).Control(5)=   "naimenovanie_organizacii_fio_ip"
+         Tab(3).Control(6)=   "jur_address"
+         Tab(3).Control(7)=   "fact_address"
          Tab(3).ControlCount=   8
          TabCaption(4)   =   "Транспорт"
          TabPicture(4)   =   "IspDoc.frx":014B
          Tab(4).ControlEnabled=   0   'False
-         Tab(4).Control(0)=   "UndoTransSredstva"
-         Tab(4).Control(1)=   "SaveTransSredstva"
-         Tab(4).Control(2)=   "DeleteTransSredstva"
-         Tab(4).Control(3)=   "EditTransSredstva"
-         Tab(4).Control(4)=   "AddTransSredstva"
-         Tab(4).Control(5)=   "GodVipuska"
-         Tab(4).Control(6)=   "KodPodr"
-         Tab(4).Control(7)=   "NDvig"
-         Tab(4).Control(8)=   "VIN"
-         Tab(4).Control(9)=   "GosZnak"
-         Tab(4).Control(10)=   "Cvet"
-         Tab(4).Control(11)=   "Model"
-         Tab(4).Control(12)=   "Marka"
-         Tab(4).Control(13)=   "Kategoriya"
-         Tab(4).Control(14)=   "TS_Actualnost"
-         Tab(4).Control(15)=   "TransSredstva"
-         Tab(4).Control(16)=   "Label75"
-         Tab(4).Control(17)=   "Label74"
-         Tab(4).Control(18)=   "Label73"
-         Tab(4).Control(19)=   "Label72"
-         Tab(4).Control(20)=   "Label71"
-         Tab(4).Control(21)=   "Label70"
-         Tab(4).Control(22)=   "Label69"
-         Tab(4).Control(23)=   "Label68"
-         Tab(4).Control(24)=   "Label67"
-         Tab(4).Control(25)=   "Label66"
+         Tab(4).Control(0)=   "Label66"
+         Tab(4).Control(1)=   "Label67"
+         Tab(4).Control(2)=   "Label68"
+         Tab(4).Control(3)=   "Label69"
+         Tab(4).Control(4)=   "Label70"
+         Tab(4).Control(5)=   "Label71"
+         Tab(4).Control(6)=   "Label72"
+         Tab(4).Control(7)=   "Label73"
+         Tab(4).Control(8)=   "Label74"
+         Tab(4).Control(9)=   "Label75"
+         Tab(4).Control(10)=   "TransSredstva"
+         Tab(4).Control(11)=   "TS_Actualnost"
+         Tab(4).Control(12)=   "Kategoriya"
+         Tab(4).Control(13)=   "Marka"
+         Tab(4).Control(14)=   "Model"
+         Tab(4).Control(15)=   "Cvet"
+         Tab(4).Control(16)=   "GosZnak"
+         Tab(4).Control(17)=   "VIN"
+         Tab(4).Control(18)=   "NDvig"
+         Tab(4).Control(19)=   "KodPodr"
+         Tab(4).Control(20)=   "GodVipuska"
+         Tab(4).Control(21)=   "AddTransSredstva"
+         Tab(4).Control(22)=   "EditTransSredstva"
+         Tab(4).Control(23)=   "DeleteTransSredstva"
+         Tab(4).Control(24)=   "SaveTransSredstva"
+         Tab(4).Control(25)=   "UndoTransSredstva"
          Tab(4).ControlCount=   26
          Begin VB.ComboBox pol 
             Height          =   315
@@ -1225,22 +1235,22 @@ Begin VB.Form SmevIspDoc
          TabCaption(0)   =   "Сведения о взыскателе"
          TabPicture(0)   =   "IspDoc.frx":018F
          Tab(0).ControlEnabled=   0   'False
-         Tab(0).Control(0)=   "Label18"
-         Tab(0).Control(1)=   "Label19"
-         Tab(0).Control(2)=   "Label20"
-         Tab(0).Control(3)=   "Label21"
-         Tab(0).Control(4)=   "Label22"
-         Tab(0).Control(5)=   "Label24"
-         Tab(0).Control(6)=   "Label25"
-         Tab(0).Control(7)=   "Label86"
-         Tab(0).Control(8)=   "status_lica"
-         Tab(0).Control(9)=   "vziskatel"
-         Tab(0).Control(10)=   "adres"
-         Tab(0).Control(11)=   "inn"
-         Tab(0).Control(12)=   "kpp"
-         Tab(0).Control(13)=   "ogrn"
-         Tab(0).Control(14)=   "data_registracii"
-         Tab(0).Control(15)=   "mesto_registracii"
+         Tab(0).Control(0)=   "mesto_registracii"
+         Tab(0).Control(1)=   "data_registracii"
+         Tab(0).Control(2)=   "ogrn"
+         Tab(0).Control(3)=   "kpp"
+         Tab(0).Control(4)=   "inn"
+         Tab(0).Control(5)=   "adres"
+         Tab(0).Control(6)=   "vziskatel"
+         Tab(0).Control(7)=   "status_lica"
+         Tab(0).Control(8)=   "Label86"
+         Tab(0).Control(9)=   "Label25"
+         Tab(0).Control(10)=   "Label24"
+         Tab(0).Control(11)=   "Label22"
+         Tab(0).Control(12)=   "Label21"
+         Tab(0).Control(13)=   "Label20"
+         Tab(0).Control(14)=   "Label19"
+         Tab(0).Control(15)=   "Label18"
          Tab(0).ControlCount=   16
          TabCaption(1)   =   "Реквизиты для перечисления"
          TabPicture(1)   =   "IspDoc.frx":01AB
@@ -2038,6 +2048,29 @@ Private Sub adres_suda_vidayushego_ispolnitelniy_document_Click()
       End If
       
       mesto_rassmotreniya_dela.Text = adres_suda_vidayushego_ispolnitelniy_document.Text
+End Sub
+
+Private Sub cmdCopyClipboard_Click()
+    Clipboard.Clear
+    Clipboard.SetText txtMessage.Text
+End Sub
+
+Private Sub cmdPasteClipboard_Click()
+
+    txtMessage.Text = Clipboard.GetText
+    Call cmdDecode_Click
+    tempFN = "c:\temp.xml"
+    
+    Set fso = CreateObject("Scripting.FileSystemObject")
+    Set out = fso.CreateTextFile(tempFN, True, True)
+    out.Write (txtMessage.Text)
+    out.Close
+    
+    SmevIspDoc.openDoc (tempFN)
+End Sub
+
+Private Sub parseTextMessage()
+
 End Sub
 
 Private Sub Command1_Click()
@@ -3719,6 +3752,7 @@ disableUdostDocument
 End Sub
 
 Sub openDoc(ByVal FileName As String)
+
     Dim XDoc As Object
     On Error GoTo error_open_doc
     Set XDoc = CreateObject("MSXML2.DOMDocument")
@@ -3959,7 +3993,9 @@ Sub openDoc(ByVal FileName As String)
     Call FileText
     
     Call Show
+    
 error_open_doc:
+
 End Sub
 
 Private Sub setVid(ByVal value As String)
