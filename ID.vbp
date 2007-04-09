@@ -13,14 +13,15 @@ Class=Base64; Base64.cls
 IconForm="SmevIspDoc"
 Startup="SmevIspDoc"
 HelpFile=""
+Title="ID"
 ExeName32="ID.exe"
 Command32=""
 Name="ID"
 HelpContextID="0"
 CompatibleMode="0"
-MajorVer=1
+MajorVer=0
 MinorVer=0
-RevisionVer=0
+RevisionVer=1
 AutoIncrementVer=0
 ServerSupportFiles=0
 CompilationType=0
@@ -38,6 +39,7 @@ Unattended=0
 Retained=0
 ThreadPerObject=0
 MaxNumberOfThreads=1
+DebugStartupOption=0
 
 [MS Transaction Server]
 AutoRefresh=1

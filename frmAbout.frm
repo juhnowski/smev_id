@@ -14,6 +14,7 @@ Begin VB.Form frmAbout
    ScaleMode       =   0  'User
    ScaleWidth      =   5380.766
    ShowInTaskbar   =   0   'False
+   StartUpPosition =   1  'CenterOwner
    Begin VB.PictureBox picIcon 
       AutoSize        =   -1  'True
       ClipControls    =   0   'False
@@ -90,7 +91,8 @@ Begin VB.Form frmAbout
       Width           =   3885
    End
    Begin VB.Label lblDisclaimer 
-      Caption         =   "Сертификационный номер в ЕСИА: 123-123-123"
+      Alignment       =   2  'Center
+      Caption         =   "Управление по обеспечению деятельности мировых судей, адвокатуры и нотариата Нижегородской области"
       ForeColor       =   &H00000000&
       Height          =   825
       Left            =   255

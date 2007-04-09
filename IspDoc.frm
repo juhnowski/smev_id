@@ -133,7 +133,7 @@ Begin VB.Form SmevIspDoc
       Begin VB.CommandButton cmdPasteClipboard 
          Caption         =   "Вставить из СМЭВ"
          Height          =   375
-         Left            =   2640
+         Left            =   5400
          TabIndex        =   206
          Top             =   5040
          Width           =   2175
@@ -141,7 +141,7 @@ Begin VB.Form SmevIspDoc
       Begin VB.CommandButton cmdCopyClipboard 
          Caption         =   "Копировать для СМЭВ"
          Height          =   375
-         Left            =   360
+         Left            =   1800
          TabIndex        =   205
          Top             =   5040
          Width           =   2175
@@ -149,7 +149,7 @@ Begin VB.Form SmevIspDoc
       Begin VB.CommandButton cmdEncode 
          Caption         =   "Кодировать"
          Height          =   375
-         Left            =   6240
+         Left            =   360
          TabIndex        =   204
          Top             =   5040
          Width           =   1335

@@ -1,5 +1,8 @@
-SmevIspDoc = 12, 14, 931, 652, Z, 58, 1, 880, 595, C
+SmevIspDoc = -2, 6, 917, 644, Z, 58, 1, 880, 595, C
 UdostDocument = 0, 0, 859, 440, C
-Nedvizhimost = 52, 52, 518, 529, I
-TransSredstva = 26, 26, 885, 466, C
+Nedvizhimost = 52, 52, 518, 529, 
+TransSredstva = 26, 26, 885, 466, 
 Sud = 52, 52, 911, 492, 
+frmAbout = 66, 87, 679, 436, , 44, 58, 657, 407, C
+Module1 = 132, 174, 745, 523, 
+Base64 = 0, 0, 613, 349, 
