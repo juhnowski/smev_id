@@ -38,43 +38,43 @@ Begin VB.Form SmevIspDoc
       TabCaption(0)   =   "Общие"
       TabPicture(0)   =   "IspDoc.frx":0000
       Tab(0).ControlEnabled=   0   'False
-      Tab(0).Control(0)=   "Label4"
-      Tab(0).Control(1)=   "Label5"
-      Tab(0).Control(2)=   "Label6"
-      Tab(0).Control(3)=   "Label7"
-      Tab(0).Control(4)=   "Label8"
-      Tab(0).Control(5)=   "Label9"
-      Tab(0).Control(6)=   "Label10"
-      Tab(0).Control(7)=   "Label11"
-      Tab(0).Control(8)=   "Label12"
-      Tab(0).Control(9)=   "Label13"
-      Tab(0).Control(10)=   "Label14"
-      Tab(0).Control(11)=   "Label15"
-      Tab(0).Control(12)=   "Label23"
-      Tab(0).Control(13)=   "Label3"
+      Tab(0).Control(0)=   "Gosposhlina"
+      Tab(0).Control(1)=   "SolidarnoeVziskanie"
+      Tab(0).Control(2)=   "vid_sushnosti_ispolneniya_ID"
+      Tab(0).Control(3)=   "FIO_sudiy"
+      Tab(0).Control(4)=   "valyuta_dolga"
+      Tab(0).Control(5)=   "summa_dolga"
+      Tab(0).Control(6)=   "podl_nemedl_isp"
+      Tab(0).Control(7)=   "data_vsupleniya_v_zs"
+      Tab(0).Control(8)=   "vidan_na_osnovanii_sud_acta_ne_podl_razm_v_seti"
+      Tab(0).Control(9)=   "dublicat"
+      Tab(0).Control(10)=   "data_sudebnogo_acta"
+      Tab(0).Control(11)=   "ob_data_vidachi"
+      Tab(0).Control(12)=   "nomer_ekz_ID"
+      Tab(0).Control(13)=   "srok_predyavleniya_k_ispolneniyu_razmernost"
       Tab(0).Control(14)=   "srok_predyavleniya_k_ispolneniyu_znachenie"
-      Tab(0).Control(15)=   "srok_predyavleniya_k_ispolneniyu_razmernost"
-      Tab(0).Control(16)=   "nomer_ekz_ID"
-      Tab(0).Control(17)=   "ob_data_vidachi"
-      Tab(0).Control(18)=   "data_sudebnogo_acta"
-      Tab(0).Control(19)=   "dublicat"
-      Tab(0).Control(20)=   "vidan_na_osnovanii_sud_acta_ne_podl_razm_v_seti"
-      Tab(0).Control(21)=   "data_vsupleniya_v_zs"
-      Tab(0).Control(22)=   "podl_nemedl_isp"
-      Tab(0).Control(23)=   "summa_dolga"
-      Tab(0).Control(24)=   "valyuta_dolga"
-      Tab(0).Control(25)=   "FIO_sudiy"
-      Tab(0).Control(26)=   "vid_sushnosti_ispolneniya_ID"
-      Tab(0).Control(27)=   "SolidarnoeVziskanie"
-      Tab(0).Control(28)=   "Gosposhlina"
+      Tab(0).Control(15)=   "Label3"
+      Tab(0).Control(16)=   "Label23"
+      Tab(0).Control(17)=   "Label15"
+      Tab(0).Control(18)=   "Label14"
+      Tab(0).Control(19)=   "Label13"
+      Tab(0).Control(20)=   "Label12"
+      Tab(0).Control(21)=   "Label11"
+      Tab(0).Control(22)=   "Label10"
+      Tab(0).Control(23)=   "Label9"
+      Tab(0).Control(24)=   "Label8"
+      Tab(0).Control(25)=   "Label7"
+      Tab(0).Control(26)=   "Label6"
+      Tab(0).Control(27)=   "Label5"
+      Tab(0).Control(28)=   "Label4"
       Tab(0).ControlCount=   29
       TabCaption(1)   =   "Судебный акт"
       TabPicture(1)   =   "IspDoc.frx":001C
       Tab(1).ControlEnabled=   0   'False
-      Tab(1).Control(0)=   "Label16"
-      Tab(1).Control(1)=   "Label17"
-      Tab(1).Control(2)=   "ustanovochnaya_chast_sudebnogo_acta"
-      Tab(1).Control(3)=   "rezolyutativnaya_chast_sudebnogo_acta"
+      Tab(1).Control(0)=   "rezolyutativnaya_chast_sudebnogo_acta"
+      Tab(1).Control(1)=   "ustanovochnaya_chast_sudebnogo_acta"
+      Tab(1).Control(2)=   "Label17"
+      Tab(1).Control(3)=   "Label16"
       Tab(1).ControlCount=   4
       TabCaption(2)   =   "Взыскатель"
       TabPicture(2)   =   "IspDoc.frx":0038
@@ -89,20 +89,20 @@ Begin VB.Form SmevIspDoc
       TabCaption(4)   =   "Реквизиты"
       TabPicture(4)   =   "IspDoc.frx":0070
       Tab(4).ControlEnabled=   0   'False
-      Tab(4).Control(0)=   "Label76"
-      Tab(4).Control(1)=   "Label77"
-      Tab(4).Control(2)=   "Label78"
-      Tab(4).Control(3)=   "mesto_rassmotreniya_dela"
-      Tab(4).Control(4)=   "naimenovanie_suda_vidayushego_ispolnitelniy_document"
-      Tab(4).Control(5)=   "adres_suda_vidayushego_ispolnitelniy_document"
+      Tab(4).Control(0)=   "adres_suda_vidayushego_ispolnitelniy_document"
+      Tab(4).Control(1)=   "naimenovanie_suda_vidayushego_ispolnitelniy_document"
+      Tab(4).Control(2)=   "mesto_rassmotreniya_dela"
+      Tab(4).Control(3)=   "Label78"
+      Tab(4).Control(4)=   "Label77"
+      Tab(4).Control(5)=   "Label76"
       Tab(4).ControlCount=   6
       TabCaption(5)   =   "Подпись"
       TabPicture(5)   =   "IspDoc.frx":008C
       Tab(5).ControlEnabled=   0   'False
-      Tab(5).Control(0)=   "Label79"
-      Tab(5).Control(1)=   "Label80"
-      Tab(5).Control(2)=   "SignatureValue"
-      Tab(5).Control(3)=   "X509Certificate"
+      Tab(5).Control(0)=   "X509Certificate"
+      Tab(5).Control(1)=   "SignatureValue"
+      Tab(5).Control(2)=   "Label80"
+      Tab(5).Control(3)=   "Label79"
       Tab(5).ControlCount=   4
       TabCaption(6)   =   "СМЭВ3"
       TabPicture(6)   =   "IspDoc.frx":00A8
@@ -298,69 +298,79 @@ Begin VB.Form SmevIspDoc
          _ExtentY        =   8916
          _Version        =   393216
          Tabs            =   5
+         Tab             =   1
          TabsPerRow      =   5
          TabHeight       =   520
          TabCaption(0)   =   "Общие сведения"
          TabPicture(0)   =   "IspDoc.frx":00DB
-         Tab(0).ControlEnabled=   -1  'True
+         Tab(0).ControlEnabled=   0   'False
          Tab(0).Control(0)=   "Label39"
-         Tab(0).Control(0).Enabled=   0   'False
          Tab(0).Control(1)=   "Label40"
-         Tab(0).Control(1).Enabled=   0   'False
          Tab(0).Control(2)=   "Label41"
-         Tab(0).Control(2).Enabled=   0   'False
          Tab(0).Control(3)=   "Label42"
-         Tab(0).Control(3).Enabled=   0   'False
          Tab(0).Control(4)=   "Label43"
-         Tab(0).Control(4).Enabled=   0   'False
          Tab(0).Control(5)=   "Label44"
-         Tab(0).Control(5).Enabled=   0   'False
          Tab(0).Control(6)=   "Label45"
-         Tab(0).Control(6).Enabled=   0   'False
          Tab(0).Control(7)=   "dolzhnik_status_lica"
-         Tab(0).Control(7).Enabled=   0   'False
          Tab(0).Control(8)=   "dolzhnik_dolzhnik"
-         Tab(0).Control(8).Enabled=   0   'False
          Tab(0).Control(9)=   "dolzhnik_adres"
-         Tab(0).Control(9).Enabled=   0   'False
          Tab(0).Control(10)=   "dolzhnik_kpp"
-         Tab(0).Control(10).Enabled=   0   'False
          Tab(0).Control(11)=   "dolzhnik_ogrn"
-         Tab(0).Control(11).Enabled=   0   'False
          Tab(0).Control(12)=   "dolzhnik_data_registracii"
-         Tab(0).Control(12).Enabled=   0   'False
          Tab(0).Control(13)=   "strana_grazhdanstva_ili_registracii"
-         Tab(0).Control(13).Enabled=   0   'False
          Tab(0).Control(14)=   "Frame1"
-         Tab(0).Control(14).Enabled=   0   'False
          Tab(0).ControlCount=   15
          TabCaption(1)   =   "Документы"
          TabPicture(1)   =   "IspDoc.frx":00F7
-         Tab(1).ControlEnabled=   0   'False
+         Tab(1).ControlEnabled=   -1  'True
          Tab(1).Control(0)=   "Label46"
+         Tab(1).Control(0).Enabled=   0   'False
          Tab(1).Control(1)=   "Label47"
+         Tab(1).Control(1).Enabled=   0   'False
          Tab(1).Control(2)=   "Label48"
+         Tab(1).Control(2).Enabled=   0   'False
          Tab(1).Control(3)=   "Label49"
+         Tab(1).Control(3).Enabled=   0   'False
          Tab(1).Control(4)=   "Label50"
+         Tab(1).Control(4).Enabled=   0   'False
          Tab(1).Control(5)=   "Label51"
+         Tab(1).Control(5).Enabled=   0   'False
          Tab(1).Control(6)=   "Label52"
+         Tab(1).Control(6).Enabled=   0   'False
          Tab(1).Control(7)=   "Label53"
+         Tab(1).Control(7).Enabled=   0   'False
          Tab(1).Control(8)=   "Label54"
+         Tab(1).Control(8).Enabled=   0   'False
          Tab(1).Control(9)=   "UdostDocument"
+         Tab(1).Control(9).Enabled=   0   'False
          Tab(1).Control(10)=   "vid"
+         Tab(1).Control(10).Enabled=   0   'False
          Tab(1).Control(11)=   "seriya"
+         Tab(1).Control(11).Enabled=   0   'False
          Tab(1).Control(12)=   "nomer"
+         Tab(1).Control(12).Enabled=   0   'False
          Tab(1).Control(13)=   "fio"
+         Tab(1).Control(13).Enabled=   0   'False
          Tab(1).Control(14)=   "data_rozhdeniya"
+         Tab(1).Control(14).Enabled=   0   'False
          Tab(1).Control(15)=   "data_vidachi"
+         Tab(1).Control(15).Enabled=   0   'False
          Tab(1).Control(16)=   "kod_podrazdeleniya"
+         Tab(1).Control(16).Enabled=   0   'False
          Tab(1).Control(17)=   "mesto_rozhdeniya"
+         Tab(1).Control(17).Enabled=   0   'False
          Tab(1).Control(18)=   "addUdostDocument"
+         Tab(1).Control(18).Enabled=   0   'False
          Tab(1).Control(19)=   "EditUdostDocument"
+         Tab(1).Control(19).Enabled=   0   'False
          Tab(1).Control(20)=   "DeleteUdostDocument"
+         Tab(1).Control(20).Enabled=   0   'False
          Tab(1).Control(21)=   "SaveUdostDocument"
+         Tab(1).Control(21).Enabled=   0   'False
          Tab(1).Control(22)=   "UndoUdostDocument"
+         Tab(1).Control(22).Enabled=   0   'False
          Tab(1).Control(23)=   "pol"
+         Tab(1).Control(23).Enabled=   0   'False
          Tab(1).ControlCount=   24
          TabCaption(2)   =   "Недвижимость"
          TabPicture(2)   =   "IspDoc.frx":0113
@@ -389,49 +399,49 @@ Begin VB.Form SmevIspDoc
          TabCaption(3)   =   "Место работы"
          TabPicture(3)   =   "IspDoc.frx":012F
          Tab(3).ControlEnabled=   0   'False
-         Tab(3).Control(0)=   "Label62"
-         Tab(3).Control(1)=   "Label63"
-         Tab(3).Control(2)=   "Label64"
-         Tab(3).Control(3)=   "Label65"
-         Tab(3).Control(4)=   "mr_actualnost"
-         Tab(3).Control(5)=   "naimenovanie_organizacii_fio_ip"
-         Tab(3).Control(6)=   "jur_address"
-         Tab(3).Control(7)=   "fact_address"
+         Tab(3).Control(0)=   "fact_address"
+         Tab(3).Control(1)=   "jur_address"
+         Tab(3).Control(2)=   "naimenovanie_organizacii_fio_ip"
+         Tab(3).Control(3)=   "mr_actualnost"
+         Tab(3).Control(4)=   "Label65"
+         Tab(3).Control(5)=   "Label64"
+         Tab(3).Control(6)=   "Label63"
+         Tab(3).Control(7)=   "Label62"
          Tab(3).ControlCount=   8
          TabCaption(4)   =   "Транспорт"
          TabPicture(4)   =   "IspDoc.frx":014B
          Tab(4).ControlEnabled=   0   'False
-         Tab(4).Control(0)=   "Label66"
-         Tab(4).Control(1)=   "Label67"
-         Tab(4).Control(2)=   "Label68"
-         Tab(4).Control(3)=   "Label69"
-         Tab(4).Control(4)=   "Label70"
-         Tab(4).Control(5)=   "Label71"
-         Tab(4).Control(6)=   "Label72"
-         Tab(4).Control(7)=   "Label73"
-         Tab(4).Control(8)=   "Label74"
-         Tab(4).Control(9)=   "Label75"
-         Tab(4).Control(10)=   "TransSredstva"
-         Tab(4).Control(11)=   "TS_Actualnost"
-         Tab(4).Control(12)=   "Kategoriya"
-         Tab(4).Control(13)=   "Marka"
-         Tab(4).Control(14)=   "Model"
-         Tab(4).Control(15)=   "Cvet"
-         Tab(4).Control(16)=   "GosZnak"
-         Tab(4).Control(17)=   "VIN"
-         Tab(4).Control(18)=   "NDvig"
-         Tab(4).Control(19)=   "KodPodr"
-         Tab(4).Control(20)=   "GodVipuska"
-         Tab(4).Control(21)=   "AddTransSredstva"
-         Tab(4).Control(22)=   "EditTransSredstva"
-         Tab(4).Control(23)=   "DeleteTransSredstva"
-         Tab(4).Control(24)=   "SaveTransSredstva"
-         Tab(4).Control(25)=   "UndoTransSredstva"
+         Tab(4).Control(0)=   "UndoTransSredstva"
+         Tab(4).Control(1)=   "SaveTransSredstva"
+         Tab(4).Control(2)=   "DeleteTransSredstva"
+         Tab(4).Control(3)=   "EditTransSredstva"
+         Tab(4).Control(4)=   "AddTransSredstva"
+         Tab(4).Control(5)=   "GodVipuska"
+         Tab(4).Control(6)=   "KodPodr"
+         Tab(4).Control(7)=   "NDvig"
+         Tab(4).Control(8)=   "VIN"
+         Tab(4).Control(9)=   "GosZnak"
+         Tab(4).Control(10)=   "Cvet"
+         Tab(4).Control(11)=   "Model"
+         Tab(4).Control(12)=   "Marka"
+         Tab(4).Control(13)=   "Kategoriya"
+         Tab(4).Control(14)=   "TS_Actualnost"
+         Tab(4).Control(15)=   "TransSredstva"
+         Tab(4).Control(16)=   "Label75"
+         Tab(4).Control(17)=   "Label74"
+         Tab(4).Control(18)=   "Label73"
+         Tab(4).Control(19)=   "Label72"
+         Tab(4).Control(20)=   "Label71"
+         Tab(4).Control(21)=   "Label70"
+         Tab(4).Control(22)=   "Label69"
+         Tab(4).Control(23)=   "Label68"
+         Tab(4).Control(24)=   "Label67"
+         Tab(4).Control(25)=   "Label66"
          Tab(4).ControlCount=   26
          Begin VB.ComboBox pol 
             Height          =   315
             ItemData        =   "IspDoc.frx":0167
-            Left            =   -67920
+            Left            =   7080
             List            =   "IspDoc.frx":0171
             TabIndex        =   195
             Top             =   2520
@@ -440,7 +450,7 @@ Begin VB.Form SmevIspDoc
          Begin VB.Frame Frame1 
             Caption         =   "Для физ.лиц"
             Height          =   1935
-            Left            =   2400
+            Left            =   -72600
             TabIndex        =   181
             Top             =   1920
             Width           =   6495
@@ -770,7 +780,7 @@ Begin VB.Form SmevIspDoc
          Begin VB.CommandButton UndoUdostDocument 
             Caption         =   "Отменить"
             Height          =   375
-            Left            =   -67920
+            Left            =   7080
             TabIndex        =   111
             Top             =   4560
             Visible         =   0   'False
@@ -779,7 +789,7 @@ Begin VB.Form SmevIspDoc
          Begin VB.CommandButton SaveUdostDocument 
             Caption         =   "Сохранить"
             Height          =   375
-            Left            =   -69600
+            Left            =   5400
             TabIndex        =   110
             Top             =   4560
             Visible         =   0   'False
@@ -788,7 +798,7 @@ Begin VB.Form SmevIspDoc
          Begin VB.CommandButton DeleteUdostDocument 
             Caption         =   "Удалить"
             Height          =   375
-            Left            =   -71520
+            Left            =   3480
             TabIndex        =   109
             Top             =   4560
             Width           =   1695
@@ -796,7 +806,7 @@ Begin VB.Form SmevIspDoc
          Begin VB.CommandButton EditUdostDocument 
             Caption         =   "Редактировать"
             Height          =   375
-            Left            =   -73200
+            Left            =   1800
             TabIndex        =   108
             Top             =   4560
             Width           =   1575
@@ -804,42 +814,42 @@ Begin VB.Form SmevIspDoc
          Begin VB.CommandButton addUdostDocument 
             Caption         =   "Добавить"
             Height          =   375
-            Left            =   -74880
+            Left            =   120
             TabIndex        =   107
             Top             =   4560
             Width           =   1575
          End
          Begin VB.TextBox mesto_rozhdeniya 
             Height          =   375
-            Left            =   -69480
+            Left            =   5520
             TabIndex        =   106
             Top             =   3960
             Width           =   3375
          End
          Begin VB.TextBox kod_podrazdeleniya 
             Height          =   375
-            Left            =   -69480
+            Left            =   5520
             TabIndex        =   104
             Top             =   3480
             Width           =   855
          End
          Begin VB.TextBox data_vidachi 
             Height          =   375
-            Left            =   -70080
+            Left            =   4920
             TabIndex        =   102
             Top             =   3000
             Width           =   1455
          End
          Begin VB.TextBox data_rozhdeniya 
             Height          =   375
-            Left            =   -70080
+            Left            =   4920
             TabIndex        =   99
             Top             =   2520
             Width           =   1455
          End
          Begin VB.TextBox fio 
             Height          =   615
-            Left            =   -70080
+            Left            =   4920
             MultiLine       =   -1  'True
             TabIndex        =   97
             Top             =   1800
@@ -847,77 +857,77 @@ Begin VB.Form SmevIspDoc
          End
          Begin VB.TextBox nomer 
             Height          =   405
-            Left            =   -70080
+            Left            =   4920
             TabIndex        =   95
             Top             =   1320
             Width           =   3975
          End
          Begin VB.TextBox seriya 
             Height          =   375
-            Left            =   -70080
+            Left            =   4920
             TabIndex        =   93
             Top             =   840
             Width           =   2295
          End
          Begin VB.ComboBox vid 
             Height          =   315
-            Left            =   -70080
+            Left            =   4920
             TabIndex        =   91
             Top             =   480
             Width           =   3975
          End
          Begin VB.ListBox UdostDocument 
             Height          =   4155
-            Left            =   -74880
+            Left            =   120
             TabIndex        =   89
             Top             =   360
             Width           =   3255
          End
          Begin VB.ComboBox strana_grazhdanstva_ili_registracii 
             Height          =   315
-            Left            =   240
+            Left            =   -74760
             TabIndex        =   88
             Top             =   4320
             Width           =   8535
          End
          Begin VB.TextBox dolzhnik_data_registracii 
             Height          =   405
-            Left            =   720
+            Left            =   -74280
             TabIndex        =   86
             Top             =   3360
             Width           =   1575
          End
          Begin VB.TextBox dolzhnik_ogrn 
             Height          =   405
-            Left            =   720
+            Left            =   -74280
             TabIndex        =   84
             Top             =   2520
             Width           =   1575
          End
          Begin VB.TextBox dolzhnik_kpp 
             Height          =   375
-            Left            =   720
+            Left            =   -74280
             TabIndex        =   82
             Top             =   1920
             Width           =   1575
          End
          Begin VB.TextBox dolzhnik_adres 
             Height          =   375
-            Left            =   1320
+            Left            =   -73680
             TabIndex        =   80
             Top             =   1440
             Width           =   7455
          End
          Begin VB.TextBox dolzhnik_dolzhnik 
             Height          =   405
-            Left            =   1920
+            Left            =   -73080
             TabIndex        =   78
             Top             =   960
             Width           =   6855
          End
          Begin VB.ComboBox dolzhnik_status_lica 
             Height          =   315
-            Left            =   1320
+            Left            =   -73680
             TabIndex        =   76
             Top             =   480
             Width           =   2295
@@ -1093,7 +1103,7 @@ Begin VB.Form SmevIspDoc
          Begin VB.Label Label54 
             Caption         =   "Место рождения"
             Height          =   375
-            Left            =   -70920
+            Left            =   4080
             TabIndex        =   105
             Top             =   3960
             Width           =   1455
@@ -1101,7 +1111,7 @@ Begin VB.Form SmevIspDoc
          Begin VB.Label Label53 
             Caption         =   "Код подразделения"
             Height          =   255
-            Left            =   -71160
+            Left            =   3840
             TabIndex        =   103
             Top             =   3480
             Width           =   1575
@@ -1109,7 +1119,7 @@ Begin VB.Form SmevIspDoc
          Begin VB.Label Label52 
             Caption         =   "Дата выдачи"
             Height          =   255
-            Left            =   -71400
+            Left            =   3600
             TabIndex        =   101
             Top             =   3120
             Width           =   1095
@@ -1117,7 +1127,7 @@ Begin VB.Form SmevIspDoc
          Begin VB.Label Label51 
             Caption         =   "Пол"
             Height          =   255
-            Left            =   -68280
+            Left            =   6720
             TabIndex        =   100
             Top             =   2520
             Width           =   375
@@ -1125,7 +1135,7 @@ Begin VB.Form SmevIspDoc
          Begin VB.Label Label50 
             Caption         =   "Дата рождения"
             Height          =   255
-            Left            =   -71520
+            Left            =   3480
             TabIndex        =   98
             Top             =   2520
             Width           =   1335
@@ -1133,7 +1143,7 @@ Begin VB.Form SmevIspDoc
          Begin VB.Label Label49 
             Caption         =   "Фамилия Имя Отчество"
             Height          =   495
-            Left            =   -71520
+            Left            =   3480
             TabIndex        =   96
             Top             =   1800
             Width           =   1215
@@ -1141,7 +1151,7 @@ Begin VB.Form SmevIspDoc
          Begin VB.Label Label48 
             Caption         =   "Номер"
             Height          =   255
-            Left            =   -70920
+            Left            =   4080
             TabIndex        =   94
             Top             =   1440
             Width           =   615
@@ -1149,7 +1159,7 @@ Begin VB.Form SmevIspDoc
          Begin VB.Label Label47 
             Caption         =   "Серия"
             Height          =   255
-            Left            =   -70920
+            Left            =   4080
             TabIndex        =   92
             Top             =   960
             Width           =   615
@@ -1157,7 +1167,7 @@ Begin VB.Form SmevIspDoc
          Begin VB.Label Label46 
             Caption         =   "Вид документа"
             Height          =   255
-            Left            =   -71520
+            Left            =   3480
             TabIndex        =   90
             Top             =   480
             Width           =   1335
@@ -1165,7 +1175,7 @@ Begin VB.Form SmevIspDoc
          Begin VB.Label Label45 
             Caption         =   "Страна гражданства или регистрации"
             Height          =   255
-            Left            =   240
+            Left            =   -74760
             TabIndex        =   87
             Top             =   3960
             Width           =   2895
@@ -1173,7 +1183,7 @@ Begin VB.Form SmevIspDoc
          Begin VB.Label Label44 
             Caption         =   "Дата регистрации"
             Height          =   255
-            Left            =   120
+            Left            =   -74880
             TabIndex        =   85
             Top             =   3120
             Width           =   1575
@@ -1181,7 +1191,7 @@ Begin VB.Form SmevIspDoc
          Begin VB.Label Label43 
             Caption         =   "ОГРН"
             Height          =   255
-            Left            =   120
+            Left            =   -74880
             TabIndex        =   83
             Top             =   2520
             Width           =   855
@@ -1189,7 +1199,7 @@ Begin VB.Form SmevIspDoc
          Begin VB.Label Label42 
             Caption         =   "КПП"
             Height          =   255
-            Left            =   240
+            Left            =   -74760
             TabIndex        =   81
             Top             =   1920
             Width           =   615
@@ -1197,7 +1207,7 @@ Begin VB.Form SmevIspDoc
          Begin VB.Label Label41 
             Caption         =   "Адрес"
             Height          =   255
-            Left            =   240
+            Left            =   -74760
             TabIndex        =   79
             Top             =   1440
             Width           =   735
@@ -1205,7 +1215,7 @@ Begin VB.Form SmevIspDoc
          Begin VB.Label Label40 
             Caption         =   "ФИО / Наименование"
             Height          =   255
-            Left            =   120
+            Left            =   -74880
             TabIndex        =   77
             Top             =   960
             Width           =   1815
@@ -1213,7 +1223,7 @@ Begin VB.Form SmevIspDoc
          Begin VB.Label Label39 
             Caption         =   "Статус лица"
             Height          =   255
-            Left            =   120
+            Left            =   -74880
             TabIndex        =   75
             Top             =   480
             Width           =   1455
@@ -1235,22 +1245,22 @@ Begin VB.Form SmevIspDoc
          TabCaption(0)   =   "Сведения о взыскателе"
          TabPicture(0)   =   "IspDoc.frx":018F
          Tab(0).ControlEnabled=   0   'False
-         Tab(0).Control(0)=   "mesto_registracii"
-         Tab(0).Control(1)=   "data_registracii"
-         Tab(0).Control(2)=   "ogrn"
-         Tab(0).Control(3)=   "kpp"
-         Tab(0).Control(4)=   "inn"
-         Tab(0).Control(5)=   "adres"
-         Tab(0).Control(6)=   "vziskatel"
-         Tab(0).Control(7)=   "status_lica"
-         Tab(0).Control(8)=   "Label86"
-         Tab(0).Control(9)=   "Label25"
-         Tab(0).Control(10)=   "Label24"
-         Tab(0).Control(11)=   "Label22"
-         Tab(0).Control(12)=   "Label21"
-         Tab(0).Control(13)=   "Label20"
-         Tab(0).Control(14)=   "Label19"
-         Tab(0).Control(15)=   "Label18"
+         Tab(0).Control(0)=   "Label18"
+         Tab(0).Control(1)=   "Label19"
+         Tab(0).Control(2)=   "Label20"
+         Tab(0).Control(3)=   "Label21"
+         Tab(0).Control(4)=   "Label22"
+         Tab(0).Control(5)=   "Label24"
+         Tab(0).Control(6)=   "Label25"
+         Tab(0).Control(7)=   "Label86"
+         Tab(0).Control(8)=   "status_lica"
+         Tab(0).Control(9)=   "vziskatel"
+         Tab(0).Control(10)=   "adres"
+         Tab(0).Control(11)=   "inn"
+         Tab(0).Control(12)=   "kpp"
+         Tab(0).Control(13)=   "ogrn"
+         Tab(0).Control(14)=   "data_registracii"
+         Tab(0).Control(15)=   "mesto_registracii"
          Tab(0).ControlCount=   16
          TabCaption(1)   =   "Реквизиты для перечисления"
          TabPicture(1)   =   "IspDoc.frx":01AB
@@ -4127,6 +4137,7 @@ Private Sub UndoUdostDocument_Click()
     udEdit = False
     UndoUdostDocument.Visible = False
     SaveUdostDocument.Visible = False
+    
     If UdostDocument.ListCount > 0 Then
         UdostDocument.Selected(0) = True
     Else
@@ -4142,6 +4153,7 @@ Private Sub UndoUdostDocument_Click()
     End If
     
     disableUdostDocument
+    
 End Sub
 
 Private Sub disableUdostDocument()
@@ -4155,9 +4167,9 @@ Private Sub disableUdostDocument()
     kod_podrazdeleniya.Enabled = False
     mesto_rozhdeniya.Enabled = False
     
-    addUdostDocument.Enabled = True
-    EditUdostDocument.Enabled = True
-    DeleteUdostDocument.Enabled = True
+    addUdostDocument.Visible = True
+    EditUdostDocument.Visible = True
+    DeleteUdostDocument.Visible = True
     
 End Sub
 
@@ -4305,4 +4317,6 @@ Private Sub cmdDecode_Click()
     Call Bas64.Base64Decode
     txtMessage.Text = Bas64.bBuffer
 
+    CommandButtonGenerate.Enabled = True
+    
 End Sub
